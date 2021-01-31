@@ -1,0 +1,9 @@
+C:\Users\urems\source\repos\ReCapProject\Entities\bin\Debug\netcoreapp3.1\Entities.deps.json
+C:\Users\urems\source\repos\ReCapProject\Entities\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\urems\source\repos\ReCapProject\Entities\bin\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\urems\source\repos\ReCapProject\Entities\obj\Debug\netcoreapp3.1\Entities.csprojAssemblyReference.cache
+C:\Users\urems\source\repos\ReCapProject\Entities\obj\Debug\netcoreapp3.1\Entities.AssemblyInfoInputs.cache
+C:\Users\urems\source\repos\ReCapProject\Entities\obj\Debug\netcoreapp3.1\Entities.AssemblyInfo.cs
+C:\Users\urems\source\repos\ReCapProject\Entities\obj\Debug\netcoreapp3.1\Entities.csproj.CoreCompileInputs.cache
+C:\Users\urems\source\repos\ReCapProject\Entities\obj\Debug\netcoreapp3.1\Entities.dll
+C:\Users\urems\source\repos\ReCapProject\Entities\obj\Debug\netcoreapp3.1\Entities.pdb

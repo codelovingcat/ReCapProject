@@ -1,0 +1,14 @@
+C:\Users\urems\source\repos\ReCapProject\Business\bin\Debug\netcoreapp3.1\Business.deps.json
+C:\Users\urems\source\repos\ReCapProject\Business\bin\Debug\netcoreapp3.1\Business.dll
+C:\Users\urems\source\repos\ReCapProject\Business\bin\Debug\netcoreapp3.1\Business.pdb
+C:\Users\urems\source\repos\ReCapProject\Business\bin\Debug\netcoreapp3.1\DataAccess.dll
+C:\Users\urems\source\repos\ReCapProject\Business\bin\Debug\netcoreapp3.1\Entities.dll
+C:\Users\urems\source\repos\ReCapProject\Business\bin\Debug\netcoreapp3.1\DataAccess.pdb
+C:\Users\urems\source\repos\ReCapProject\Business\bin\Debug\netcoreapp3.1\Entities.pdb
+C:\Users\urems\source\repos\ReCapProject\Business\obj\Debug\netcoreapp3.1\Business.csprojAssemblyReference.cache
+C:\Users\urems\source\repos\ReCapProject\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfoInputs.cache
+C:\Users\urems\source\repos\ReCapProject\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfo.cs
+C:\Users\urems\source\repos\ReCapProject\Business\obj\Debug\netcoreapp3.1\Business.csproj.CoreCompileInputs.cache
+C:\Users\urems\source\repos\ReCapProject\Business\obj\Debug\netcoreapp3.1\Business.csproj.CopyComplete
+C:\Users\urems\source\repos\ReCapProject\Business\obj\Debug\netcoreapp3.1\Business.dll
+C:\Users\urems\source\repos\ReCapProject\Business\obj\Debug\netcoreapp3.1\Business.pdb
