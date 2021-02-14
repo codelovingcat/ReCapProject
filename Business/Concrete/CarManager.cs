@@ -12,7 +12,7 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        ICarDal _carDal;
+        private ICarDal _carDal;
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
@@ -64,6 +64,18 @@ namespace Business.Concrete
             //Araç detayı
 
             return new SuccessDataResult<Car> (_carDal.Get(c => c.Id == carId));
+        }
+
+        public IResult Delete(Car car)
+        {
+            _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
+        }
+
+        public IResult Update(Car car)
+        {
+            _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
         }
     }
 }
