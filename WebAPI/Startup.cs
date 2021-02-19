@@ -30,7 +30,7 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-           // IOCDotNetCoreStartup(services);
+           //IOCDotNetCoreStartup(services);
         }
 
         private static void IOCDotNetCoreStartup(IServiceCollection services)
