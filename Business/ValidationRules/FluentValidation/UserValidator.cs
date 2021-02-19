@@ -15,7 +15,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(u => u.LastName).NotEmpty().MinimumLength(2);
             RuleFor(u => u.LastName).NotEmpty();
             RuleFor(u => u.Email).NotEmpty();
-            RuleFor(u => u.Password).NotEmpty().Equal(x => x.Password;
+            RuleFor(u => u.Password).NotEmpty().Equal(x => x.Password);
             RuleFor(u => u.Password).MinimumLength(6).WithMessage("Şifre 6 karakterden az olmamalı.");
             RuleFor(u => u.Password).Matches("[A-Z]").WithMessage("Şifreniz en az bir büyük harf içermelidir."); 
             RuleFor(u => u.Password).Matches("[a-z]").WithMessage("Şifreniz en az bir küçük harf içermelidir.");
