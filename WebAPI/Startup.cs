@@ -30,6 +30,11 @@ namespace WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+           // IOCDotNetCoreStartup(services);
+        }
+
+        private static void IOCDotNetCoreStartup(IServiceCollection services)
+        {
             services.AddScoped<ICarService, CarManager>();
             services.AddScoped<IBrandService, BrandManager>();
             services.AddScoped<IColorService, ColorManager>();
@@ -38,7 +43,7 @@ namespace WebAPI
             services.AddScoped<IRentalService, RentalManager>();
 
             services.AddScoped<ICarDal, EfCarDal>();
-            services.AddScoped<IBrandDal, EfBrandDal>(); 
+            services.AddScoped<IBrandDal, EfBrandDal>();
             services.AddScoped<IColorDal, EfColorDal>();
             services.AddScoped<ICustomerDal, EfCustomerDal>();
             services.AddScoped<IUserDal, EfUserDal>();
