@@ -1,12 +1,13 @@
-﻿
-using Autofac;
+﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,6 +36,23 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+
+            builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
+            builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
+
+            builder.RegisterType<AdminManager>().As<IAdminService>().SingleInstance();
+            builder.RegisterType<EfAdminDal>().As<IAdminDal>().SingleInstance();
+
+            builder.RegisterType<CityManager>().As<ICityService>().SingleInstance();
+            builder.RegisterType<EfCityDal>().As<ICityDal>().SingleInstance();
+
+            builder.RegisterType<PhotoManager>().As<IPhotoService>().SingleInstance();
+            builder.RegisterType<EfPhotoDal>().As<IPhotoDal>().SingleInstance();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
