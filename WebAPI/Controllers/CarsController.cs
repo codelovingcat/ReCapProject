@@ -14,12 +14,10 @@ namespace WebAPI.Controllers
     public class CarsController : ControllerBase
     {
         private ICarService _carService;
-        private ICarImageService _carImageService;
 
-        public CarsController(ICarService carService, ICarImageService carImageService)
+        public CarsController(ICarService carService)
         {
             _carService = carService;
-            _carImageService = carImageService;
         }
 
         [HttpGet("getall")]

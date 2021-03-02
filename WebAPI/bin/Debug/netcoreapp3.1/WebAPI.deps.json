@@ -30,6 +30,7 @@
           "DataAccess": "1.0.0",
           "Entities": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.12",
+          "System.Collections": "4.3.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",

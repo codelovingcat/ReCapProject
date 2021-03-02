@@ -22,124 +22,22 @@ namespace WebAPI.Controllers
     public class CarImagesController : ControllerBase
     {
         private ICarImageService _carImageService;
-        private IWebHostEnvironment _webHostEnvironment;
 
-        public CarImagesController(ICarImageService carImageService, IWebHostEnvironment webHostEnvironment)
+        public CarImagesController(ICarImageService carImageService)
         {
             _carImageService = carImageService;
-            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpPost("add")]
-        public IActionResult AddAsync( CarImage carImage)
+        public IActionResult Add([FromForm(Name = ("Image"))] IFormFile file, [FromForm] CarImage carImage)
         {
-            var result = _carImageService.Add(carImage);
+            var result = _carImageService.Add(file, carImage);
             if (result.Success)
             {
                 return Ok(result);
             }
-
-            return BadRequest(result);
+            return BadRequest(result.Message);
         }
-
-
-
-        //[HttpPost("ekle")]
-        //public string Post([FromForm] FileUpload file)
-        //{
-        //    try
-        //    {
-        //        if (file..Length > 0)
-        //        {
-        //            string path = _webHostEnvironment.WebRootPath + "\\uploads\\";
-        //            if (!Directory.Exists(path))
-        //            {
-        //                Directory.CreateDirectory(path);
-        //            }
-        //            using (FileStream fileStream = System.IO.File.Create(path + Guid.NewGuid().ToString() + file.file.FileName))
-        //            {
-        //                file.file.CopyTo(fileStream);
-        //                fileStream.Flush();
-        //                return "Uploaded";
-        //            }
-        //        }
-        //        else
-        //        {
-        //            return "Uploaded Not.";
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return ex.Message;
-        //    }
-        //}
-
-
-
-
-        [HttpPost("ek")]
-        public IActionResult Add( IFormFile file)
-        {
-            if (ModelState.IsValid)
-            {
-                //var entity = new CarImage()
-                //{
-                //    Id= model.Id,
-                //    CarId = model.CarId,
-                //    ImageDate =model.ImageDate
-                //};
-
-                if (file != null)
-                {
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\images", file.FileName);
-                    //entity.ImagePath = file.FileName;
-                    using (var stream = new FileStream(path, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-
-                }
-               // var result = _carImageService.Add(entity);
-               
-               // return Ok(result.Message);
-            }
-            return BadRequest();
-
-
-
-
-
-            //List<IResult> results = new List<IResult>();
-            //var result = _carImageService.Add(carImage);
-            //if (result.Success)
-            //{
-            //    if (file.file.Length > 0 && file.file. )
-            //    {
-            //        string path = _webHostEnvironment.WebRootPath + "\\uploads\\";
-                    
-            //        if (!Directory.Exists(path))
-            //        {
-            //            Directory.CreateDirectory(path);
-            //        }
-            //        using (FileStream fileStream = System.IO.File.Create(path + Guid.NewGuid().ToString() + file.file.FileName))
-            //        {
-            //            file.file.CopyTo(fileStream);
-            //            fileStream.Flush();
-            //            return Ok(result.Message);
-            //        }
-            //        results.Add(_carImageService.Add(new CarImage()
-            //        {
-            //            ImagePath = path,
-            //            Id = carImage.Id
-            //        }));
-            //    }
-               
-            //}
-            
-
-        }
-
-
 
         [HttpGet("getall")]
         public IActionResult GetAll()
@@ -147,11 +45,59 @@ namespace WebAPI.Controllers
             var result = _carImageService.GetAll();
             if (result.Success)
             {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int id)
+        {
+            var result = _carImageService.GetById(id);
+            if (result.Success)
+            {
                 return Ok(result.Data);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbyCarId")]
+        public IActionResult GetCarImagesByCarId(int carId)
+        {
+            var result = _carImageService.GetCarImageByCarId(carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update([FromForm(Name = ("Image"))] IFormFile file, [FromForm(Name = ("Id"))] int Id)
+        {
+            var carImage = _carImageService.GetById(Id).Data;
+            var result = _carImageService.Update(file, carImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete([FromForm(Name = ("Id"))] int Id)
+        {
+            var carImage = _carImageService.GetById(Id).Data;
+
+            var result = _carImageService.Delete(carImage);
+            if (result.Success)
+            {
+                return Ok(result.Message);
             }
             return BadRequest(result.Message);
         }
     }
+
 }
 
 

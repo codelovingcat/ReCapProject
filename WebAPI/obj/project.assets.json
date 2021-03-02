@@ -8076,7 +8076,8 @@
       "Core >= 1.0.0",
       "DataAccess >= 1.0.0",
       "Entities >= 1.0.0",
-      "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.12"
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.1.12",
+      "System.Collections >= 4.3.0"
     ]
   },
   "packageFolders": {
@@ -8142,6 +8143,10 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[3.1.12, )"
+          },
+          "System.Collections": {
+            "target": "Package",
+            "version": "[4.3.0, )"
           }
         },
         "imports": [

@@ -40,15 +40,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
 
-            builder.RegisterType<AdminManager>().As<IAdminService>().SingleInstance();
-            builder.RegisterType<EfAdminDal>().As<IAdminDal>().SingleInstance();
-
-            builder.RegisterType<CityManager>().As<ICityService>().SingleInstance();
-            builder.RegisterType<EfCityDal>().As<ICityDal>().SingleInstance();
-
-            builder.RegisterType<PhotoManager>().As<IPhotoService>().SingleInstance();
-            builder.RegisterType<EfPhotoDal>().As<IPhotoDal>().SingleInstance();
-
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 

@@ -67,5 +67,7 @@ namespace Business.Constants
         internal static string UserAlreadyExists;
         internal static string AccessTokenCreated;
         internal static string UserRegistered;
+        internal static string AdminAdded;
+        internal static string AdminListed;
     }
 }
