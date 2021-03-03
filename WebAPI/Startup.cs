@@ -20,6 +20,9 @@ using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Core.Utilities.Security.Encryption;
+using Microsoft.AspNetCore.Http;
+using Core.Extensions;
+using Core.DependencyResolvers;
 
 namespace WebAPI
 {
@@ -38,6 +41,8 @@ namespace WebAPI
             services.AddControllers();
             // services.AddAutoMapper();
             //IOCDotNetCoreStartup(services);
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -54,7 +59,11 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            ServiceTool.Create(services);
+            // ServiceTool.Create(services);
+            services.AddDependencyResolvers(new ICoreModule[]
+             {
+                new CoreModule(),
+             });
         }
 
         private static void IOCDotNetCoreStartup(IServiceCollection services)
