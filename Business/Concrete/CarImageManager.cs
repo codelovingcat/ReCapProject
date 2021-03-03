@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Aspects.Autofac.Transaction;
 using Core.Utilities.Business;
 using Core.Utilities.FileHelper;
 using Core.Utilities.Results;
@@ -35,12 +36,12 @@ namespace Business.Concrete
             _carImageDal.Add(carImage);
             return new SuccessResult(Messages.CarImageAdded);
         }
-        
+
         public IResult Delete(CarImage carImage)
         {
             var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\wwwroot")) + _carImageDal.Get(c => c.CarId == carImage.CarId).ImagePath;
             FileHelper.Delete(carImage.ImagePath);
-            
+
             _carImageDal.Delete(carImage);
             return new SuccessResult(Messages.CarImageDeleted);
         }
@@ -60,6 +61,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(image => image.CarId == carId));
         }
 
+        [TransactionScopeAspect]
+        public IResult TransactionalOperation(CarImage carImage)
+        {
+            _carImageDal.Update(carImage);
+            _carImageDal.Add(carImage);
+            return new SuccessResult(Messages.CarImageUpdated);
+        }
+
         public IResult Update(IFormFile formFile, CarImage carImage)
         {
             var path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\wwwroot")) + _carImageDal.Get(c => c.CarId == carImage.CarId).ImagePath;
@@ -70,7 +79,7 @@ namespace Business.Concrete
 
         private IResult CheckIfCarImageLimitExceded(int carImageId)
         {
-            var result = _carImageDal.GetAll(c=>c.CarId== carImageId);
+            var result = _carImageDal.GetAll(c => c.CarId == carImageId);
             if (result.Count > 5)
             {
                 return new ErrorResult(Messages.CheckIfCarImageLimitExceded);
