@@ -22,7 +22,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        [Authorize(Roles ="Product.List")]
         public IActionResult GetAll()
         {
             var result = _carService.GetAll();
@@ -33,7 +32,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
 
         }
-        [HttpGet("getbyid")]
+        [HttpGet("getbyid{id}")]
         public IActionResult GetById(int id)
         {
             var result = _carService.GetById(id);

@@ -13,11 +13,11 @@ namespace ConsoleUI
             //CarManagerTest();
 
             UserManager userManager = new UserManager(new EfUserDal());
-            var result = userManager.GetAll();
-            foreach (var item in result.Data)
-            {
-                Console.WriteLine(item.FirstName +"/"+ item.LastName);
-            }
+            //var result = userManager.GetAll();
+            //foreach (var item in result.Data)
+            //{
+            //    Console.WriteLine(item.FirstName +"/"+ item.LastName);
+            //}
 
             Console.ReadLine();
         }

@@ -25,7 +25,6 @@ namespace Business.Concrete
         }
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
-        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             _carDal.Add(car);
@@ -33,9 +32,10 @@ namespace Business.Concrete
         }
 
         [PerformanceAspect(5)]
+        [CacheRemoveAspect("ICarService.Get")]
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour==15)
+            if (DateTime.Now.Hour==1)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
@@ -63,6 +63,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>> (_carDal.GetAll(c => c.ColorId == colorId));
         }
 
+       
         public IDataResult<Car> GetById(int carId)
         {
             //Araç detayı
