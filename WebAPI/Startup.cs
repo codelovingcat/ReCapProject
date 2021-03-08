@@ -59,7 +59,7 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            // ServiceTool.Create(services);
+            ServiceTool.Create(services);
             services.AddDependencyResolvers(new ICoreModule[]
              {
                 new CoreModule(),
