@@ -43,8 +43,10 @@ namespace WebAPI
             //IOCDotNetCoreStartup(services);
 
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
+            services.AddCors();
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -66,22 +68,22 @@ namespace WebAPI
              });
         }
 
-        private static void IOCDotNetCoreStartup(IServiceCollection services)
-        {
-            services.AddScoped<ICarService, CarManager>();
-            services.AddScoped<IBrandService, BrandManager>();
-            services.AddScoped<IColorService, ColorManager>();
-            services.AddScoped<ICustomerService, CustomerManager>();
-            services.AddScoped<IUserService, UserManager>();
-            services.AddScoped<IRentalService, RentalManager>();
+        //private static void IOCDotNetCoreStartup(IServiceCollection services)
+        //{
+        //    services.AddScoped<ICarService, CarManager>();
+        //    services.AddScoped<IBrandService, BrandManager>();
+        //    services.AddScoped<IColorService, ColorManager>();
+        //    services.AddScoped<ICustomerService, CustomerManager>();
+        //    services.AddScoped<IUserService, UserManager>();
+        //    services.AddScoped<IRentalService, RentalManager>();
 
-            services.AddScoped<ICarDal, EfCarDal>();
-            services.AddScoped<IBrandDal, EfBrandDal>();
-            services.AddScoped<IColorDal, EfColorDal>();
-            services.AddScoped<ICustomerDal, EfCustomerDal>();
-            services.AddScoped<IUserDal, EfUserDal>();
-            services.AddScoped<IRentalDal, EfRentalDal>();
-        }
+        //    services.AddScoped<ICarDal, EfCarDal>();
+        //    services.AddScoped<IBrandDal, EfBrandDal>();
+        //    services.AddScoped<IColorDal, EfColorDal>();
+        //    services.AddScoped<ICustomerDal, EfCustomerDal>();
+        //    services.AddScoped<IUserDal, EfUserDal>();
+        //    services.AddScoped<IRentalDal, EfRentalDal>();
+        //}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -90,6 +92,8 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
