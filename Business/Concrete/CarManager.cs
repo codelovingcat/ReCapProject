@@ -31,8 +31,8 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarAdded);
         }
 
-        [PerformanceAspect(5)]
-        [CacheRemoveAspect("ICarService.Get")]
+        // [PerformanceAspect(5)]
+        // [CacheRemoveAspect("ICarService.Get")]
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour==1)
